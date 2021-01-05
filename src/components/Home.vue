@@ -1,45 +1,59 @@
 <template>
   <div class="home">
-    <img class="logo" src="./../assets/taiji.png" alt="" />
-    <h1>Taiji UI</h1>
+    <Topnav />
+
+    <div class="logo-wrap">
+      <img class="logo" src="./../assets/taiji.png" alt="" />
+    </div>
 
     <div class="description">
+      <h1>Taiji UI</h1>
       <h2>无极而太极，</h2>
       <p>天地之道，以阴阳二气造化万物。</p>
       <p>世界有太极，太极有世界。</p>
     </div>
 
-    <router-link class="start-btn" to="/doc">开始使用</router-link>
+    <div class="start">
+      <router-link class="start-btn" to="/doc">开始使用</router-link>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .home {
   height: 100vh;
+  overflow-y: hidden;
   box-sizing: border-box;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 
   h1 {
     margin-top: 0;
+  }
+
+  .logo-wrap {
+    margin-top: 30px;
+    text-align: center;
   }
 
   .description {
     min-width: 100px;
     max-width: 300px;
     margin: 0 auto;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     text-align: left;
   }
 
-  .start-btn {
-    display: inline-block;
-    border: 6px solid #474747;
-    padding: 10px 20px;
-    color: #474747;
-    font-weight: 700;
-    text-decoration: none;
+  .start {
+    text-align: center;
+    .start-btn {
+      margin: 0 auto;
+      display: inline-block;
+      border: 6px solid #474747;
+      padding: 10px 20px;
+      color: #474747;
+      font-weight: 700;
+      text-decoration: none;
+    }
   }
 
   .logo {
@@ -51,6 +65,7 @@
   @media screen and (max-width: 500px) {
     .logo {
       max-width: 200px;
+      margin-top: 68px;
     }
   }
 }
@@ -62,8 +77,11 @@
 }
 </style>
 
-<script>
+<script lang="ts">
+import Topnav from '../components/Topnav.vue'
+
 export default {
   name: 'Home',
+  components: { Topnav },
 }
 </script>
