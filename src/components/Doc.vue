@@ -1,6 +1,6 @@
 <template>
   <div class="doc-wrap">
-    <Topnav />
+    <Topnav :asideBtnVisible="true" />
     <Siderbar v-if="asideVisible" />
     <section class="content">
       <router-view />
@@ -36,9 +36,10 @@
 </style>
 
 <script lang="ts">
+import { inject, Ref } from 'vue'
 import Topnav from './Topnav.vue'
 import Siderbar from './Sidebar.vue'
-import { inject, Ref } from 'vue'
+import router from '../routers'
 
 export default {
   name: 'Doc',
@@ -47,8 +48,15 @@ export default {
   },
   components: { Topnav, Siderbar },
   setup() {
+    const width = document.documentElement.clientWidth
     const asideVisible = inject<Ref<boolean>>('asideVisible')
     console.log('Doc获取的asideVisible', asideVisible.value)
+
+    router.afterEach(() => {
+      if (width <= 500) {
+        asideVisible.value = false
+      }
+    })
 
     return {
       asideVisible,

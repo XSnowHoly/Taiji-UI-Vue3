@@ -1,7 +1,7 @@
 <template>
   <div class="topnav-wrap">
     <div class="topnav">
-      <div class="icon-wrap" @click="toggleMenu">
+      <div class="icon-wrap" v-if="asideBtnVisible" @click="toggleMenu">
         <i class="iconfont icon-taiji"></i>
       </div>
       <div class="logo" @click="toHome">
@@ -73,6 +73,12 @@ import { useRouter } from 'vue-router'
 
 export default {
   name: 'Topnav',
+  props: {
+    asideBtnVisible: {
+      type: Boolean,
+      default: false,
+    },
+  },
   setup() {
     const asideVisible = inject<Ref<boolean>>('asideVisible')
     console.log('Topnav获取的asideVisible', asideVisible.value)

@@ -1,5 +1,6 @@
 import Home from './components/Home.vue'
 import Doc from './components/Doc.vue'
+import DocDemo from './components/DocDemo.vue'
 import ButtonDemo from './components/ButtonDemo.vue'
 import TabDemo from './components/TabDemo.vue'
 import SwitchDemo from './components/SwitchDemo.vue'
@@ -18,6 +19,10 @@ const router = createRouter({
       path: '/doc',
       component: Doc,
       children: [
+        {
+          path: '',
+          component: DocDemo,
+        },
         {
           path: 'button',
           component: ButtonDemo,
