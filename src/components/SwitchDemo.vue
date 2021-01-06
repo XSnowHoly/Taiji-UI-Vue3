@@ -1,28 +1,23 @@
 <template>
-  <div class="button-wrap">Swtich demo页面</div>
+  <div class="switch-wrap">
+    <Switch v-model:value="checked" />
+  </div>
 </template>
 
-<style lang="scss">
-.doc-wrap {
-  padding-top: 64px;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-
-  .aside {
-    max-width: 200px;
-  }
-
-  .content {
-    flex: 1;
-    background: #999;
-    overflow-y: scroll;
-  }
-}
-</style>
-
 <script lang="ts">
+import { ref } from 'vue'
+import Switch from '../lib/Switch.vue'
+
 export default {
   name: 'ButtonDemo',
+  components: {
+    Switch,
+  },
+  setup() {
+    const checked = ref(false)
+    return {
+      checked,
+    }
+  },
 }
 </script>

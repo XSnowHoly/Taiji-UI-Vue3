@@ -9,6 +9,8 @@
 <style lang="scss">
 .aside {
   max-width: 200px;
+  position: relative;
+  z-index: 100;
 
   .menu-item {
     display: block;

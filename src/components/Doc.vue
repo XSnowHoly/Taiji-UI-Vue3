@@ -21,7 +21,8 @@
 
   .content {
     flex: 1;
-    background: #999;
+    padding: 20px;
+    background: #d6d6d6;
     overflow-y: scroll;
   }
 
