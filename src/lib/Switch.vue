@@ -7,6 +7,7 @@
 <style lang="scss" scoped>
 $h: 22px;
 $h2: $h - 4px;
+$radius: 22px;
 button {
   height: $h;
   width: $h * 2.2;
@@ -19,7 +20,24 @@ button {
     outline: none;
   }
 
-  $radius: 22px;
+  &:active {
+    span {
+      &::before {
+        right: -30%;
+        left: 0;
+      }
+    }
+
+    &.checked {
+      span {
+        &::before {
+          right: 0;
+          left: -30%;
+        }
+      }
+    }
+  }
+
   span {
     position: absolute;
     z-index: 10;
@@ -30,7 +48,20 @@ button {
     box-shadow: 0px 1px 1px #333;
     background: #4e4e4e;
     border-radius: $radius / 2;
-    transition: left 250ms;
+    transition: all 250ms;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: #4e4e4e;
+      border-radius: $radius;
+      box-shadow: 0px 1px 1px #333;
+      content: '';
+      transition: all 250ms ease-in-out;
+    }
   }
 
   &.checked {
@@ -39,6 +70,10 @@ button {
     span {
       left: $h * 2.2 - $radius;
       background: #f5f5f5;
+
+      &::before {
+        background: #fff;
+      }
     }
   }
 }
