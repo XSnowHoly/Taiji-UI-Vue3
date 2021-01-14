@@ -1,0 +1,12 @@
+[class^="taiji-"],
+[class*=" taiji-"]
+[class^="taiji-"]::before,
+[class*=" taiji-"]::before,
+[class^="taiji-"]::after,
+[class*=" taiji-"]::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  -webkit-tap-highlight-color: transparent;
+}

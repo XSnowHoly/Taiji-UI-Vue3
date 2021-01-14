@@ -1,14 +1,19 @@
 <template>
-  <button :class="{ checked: value }" @click="toggle">
+  <button
+    class="taiji-switch"
+    :class="{ 'taiji-checked': value }"
+    @click="toggle"
+  >
     <span></span>
   </button>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $h: 22px;
 $h2: $h - 4px;
 $radius: 22px;
-button {
+.taiji-switch {
+  box-sizing: border-box;
   height: $h;
   width: $h * 2.2;
   border: none;
@@ -28,7 +33,7 @@ button {
       }
     }
 
-    &.checked {
+    &.taiji-checked {
       span {
         &::before {
           right: 0;
@@ -64,7 +69,7 @@ button {
     }
   }
 
-  &.checked {
+  &.taiji-checked {
     background: #363636;
 
     span {

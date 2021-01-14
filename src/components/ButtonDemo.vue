@@ -3,6 +3,9 @@
   <h1>示例1</h1>
   <div>
     <Button>您好</Button>
+    <Button theme="primary">您好</Button>
+    <Button theme="link">您好</Button>
+    <Button theme="text">您好</Button>
   </div>
 </template>
 
