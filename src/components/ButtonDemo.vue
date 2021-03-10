@@ -32,15 +32,23 @@
   <div>
     <Button theme="primary" loading>加载中</Button>
   </div>
+  <br />
+  <h2>危险按钮</h2>
+  <div>
+    <Button theme="primary" danger>普通</Button>
+    <Button danger>普通</Button>
+    <Button theme="link" danger>普通</Button>
+    <Button theme="text" danger>普通</Button>
+  </div>
 </template>
 
 <script lang="ts">
-import Button from '../lib/Button.vue';
+import Button from '../lib/Button.vue'
 
 export default {
   name: 'ButtonDemo',
   components: {
     Button,
   },
-};
+}
 </script>

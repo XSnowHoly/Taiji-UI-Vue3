@@ -1,12 +1,12 @@
 <template>
   <button class="taiji-button" :class="classes">
-    <span :class="{'taiji-button-loading': loading}"></span>
+    <span v-if="loading"></span>
     <slot />
   </button>
 </template>
 
 <script lang="ts">
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 export default {
   name: 'Button',
@@ -21,23 +21,29 @@ export default {
     },
     loading: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
+    danger: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props) {
-    const { theme, size } = props;
+    const { theme, size, danger, loading } = props
     const classes = computed(() => {
       return {
         [`taiji-theme-${theme}`]: theme,
         [`taiji-theme-${size}`]: size,
-      };
-    });
+        ['taiji-button-loading']: loading,
+        ['taiji-button-danger']: danger,
+      }
+    })
 
     return {
       classes,
-    };
+    }
   },
-};
+}
 </script>
 
 <style lang="scss">
@@ -56,6 +62,7 @@ $gray: #a8a8a8;
 $radius: 4px;
 $bg: #333;
 $normalBg: #fff;
+$dangerBg: #ff4d4f;
 
 @keyframes rotateAnimation {
   100% {
@@ -144,17 +151,53 @@ $normalBg: #fff;
     }
   }
 
-  > .taiji-button-loading {
-    display: block;
-    margin-right: 6px;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: transparent;
-    border: 3px solid transparent;
-    border-top: 3px solid #e2e2e2;
-    border-left: 3px solid #e2e2e2;
-    animation: rotateAnimation infinite linear 1.2s;
+  &.taiji-button-danger {
+    border-color: $dangerBg;
+    color: $dangerBg;
+
+    &.taiji-theme-primary {
+      background: $dangerBg;
+      border-color: $dangerBg;
+      color: #fff;
+
+      &:hover,
+      &:focus {
+        border-color: lighten($dangerBg, 5%);
+        background: lighten($dangerBg, 5%);
+      }
+    }
+
+    &.taiji-theme-link {
+      border-color: transparent;
+
+      &:hover,
+      &:focus {
+        color: lighten($dangerBg, 10%);
+      }
+    }
+
+    &.taiji-theme-text {
+      border-color: transparent;
+    }
+  }
+
+  &.taiji-button-loading {
+    border-color: lighten($bg, 20%);
+    background: lighten($bg, 20%);
+    cursor: not-allowed;
+
+    > span {
+      display: block;
+      margin-right: 6px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: transparent;
+      border: 3px solid transparent;
+      border-top: 3px solid #e2e2e2;
+      border-left: 3px solid #e2e2e2;
+      animation: rotateAnimation infinite linear 1.2s;
+    }
   }
 }
 </style>
